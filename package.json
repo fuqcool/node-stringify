@@ -1,10 +1,11 @@
 {
   "name": "node-stringify",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "./node-stringify.js",
-  "dependencies": {},
+  "dependencies": {
+    "underscore": "^1.6.0"
+  },
   "devDependencies": {
-    "underscore": "^1.6.0",
     "jasmine-node": "^1.14.3"
   },
   "scripts": {
