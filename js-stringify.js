@@ -15,7 +15,7 @@ var stringify = function (obj) {
   }
 
   if (_.isObject(obj)) {
-    return '{' + _.map(obj, function (v, k) { return '(' + k + ':' + stringify(v) + ')' }).join(',') + '}'
+    return '({' + _.map(obj, function (v, k) { return k + ':' + stringify(v) }).join(',') + '})'
   }
 }
 

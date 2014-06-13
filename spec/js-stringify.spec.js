@@ -38,4 +38,22 @@ describe('js-stringify test', function () {
   it('should stringify an array containning simple objects', function () {
     expect(eval(stringify([77, null, undefined, "a'bc"]))).toEqual([77, null, undefined, "a'bc"])
   })
+
+  it('should stringify an empty object', function () {
+    expect(eval(stringify({}))).toEqual({})
+  })
+
+  it('should stringify an object with some fields', function () {
+    expect(eval(stringify({a: 123, b: 'abc'}))).toEqual({a: 123, b: 'abc'})
+  })
+
+  it('should stringify an array containning objects', function () {
+    expect(eval(stringify([{a: 123}, ['abc', {}]])))
+      .toEqual([{a: 123}, ['abc', {}]])
+  })
+
+  it('should stringify an object containning arrays', function () {
+    expect(eval(stringify({a: [1, 2, 3], b: /foo$/i})))
+      .toEqual({a: [1, 2, 3], b: /foo$/i})
+  })
 })
