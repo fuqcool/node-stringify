@@ -1,5 +1,6 @@
 {
   "name": "node-stringify",
+  "version": "0.0.1",
   "main": "./node-stringify.js",
   "dependencies": {},
   "devDependencies": {
