@@ -1,0 +1,7 @@
+{
+  "name": "js-stringify",
+  "dependencies": {},
+  "devDependencies": {
+    "underscore": "^1.6.0"
+  }
+}
