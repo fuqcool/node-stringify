@@ -38,10 +38,4 @@ describe('js-stringify test', function () {
   it('should stringify an array containning simple objects', function () {
     expect(eval(stringify([77, null, undefined, "a'bc"]))).toEqual([77, null, undefined, "a'bc"])
   })
-
-  it('should stringify a simple object', function () {
-    console.log(eval(stringify({ a: 77, b: 'abc' })));
-    // expect(eval(stringify({ a: 77, b: 'abc' }))).toEqual({ a: 77, b: 'abc' });
-  })
-
 })
