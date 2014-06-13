@@ -1,5 +1,6 @@
 {
-  "name": "js-stringify",
+  "name": "node-stringify",
+  "main": "./node-stringify.js",
   "dependencies": {},
   "devDependencies": {
     "underscore": "^1.6.0",

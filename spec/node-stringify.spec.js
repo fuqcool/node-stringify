@@ -1,6 +1,6 @@
-var stringify = require('../js-stringify.js')
+var stringify = require('../node-stringify.js')
 
-describe('js-stringify test', function () {
+describe('node-stringify test', function () {
 
   it('should stringify null', function () {
     expect(stringify(null)).toBe('null')

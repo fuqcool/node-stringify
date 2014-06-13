@@ -19,5 +19,4 @@ var stringify = function (obj) {
   }
 }
 
-
 module.exports = stringify
