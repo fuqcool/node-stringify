@@ -2,6 +2,10 @@
   "name": "js-stringify",
   "dependencies": {},
   "devDependencies": {
-    "underscore": "^1.6.0"
+    "underscore": "^1.6.0",
+    "jasmine-node": "^1.14.3"
+  },
+  "scripts": {
+    "test": "./node_modules/jasmine-node/bin/jasmine-node spec/"
   }
 }
