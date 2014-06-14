@@ -1,5 +1,7 @@
-node-stringify [![Build Status](https://travis-ci.org/fuqcool/node-stringify.svg?branch=master)](https://travis-ci.org/fuqcool/node-stringify)
+node-stringify
 ==================
+
+[![Build Status](https://travis-ci.org/fuqcool/node-stringify.svg?branch=master)](https://travis-ci.org/fuqcool/node-stringify)
 
 ## Install
 
