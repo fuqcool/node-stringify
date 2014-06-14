@@ -26,6 +26,7 @@ console.assert(stringify(function (a,b,c) {}) === 'function (a,b,c) {}');
 
 console.assert(stringify([1, 2, 3]) === '[1,2,3]');
 
+// The parenthesis is to make the result work with `eval`
 console.assert(stringify({a: 1, b: 2}) === '({a:1,b:2})');
 
 console.assert(stringify({a: 1, b: [2, 3]}) === '({a:1,b:[2,3]})');
