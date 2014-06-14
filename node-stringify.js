@@ -11,7 +11,7 @@ var stringify = function (obj) {
   if (_.isDate(obj)) { return 'new Date(' + obj.getTime() + ')' }
 
   if (_.isArray(obj)) {
-    return '[' + _.map(obj, stringify).join(', ') + ']'
+    return '[' + _.map(obj, stringify).join(',') + ']'
   }
 
   if (_.isObject(obj)) {
