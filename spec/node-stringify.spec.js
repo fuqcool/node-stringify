@@ -22,6 +22,11 @@ describe('node-stringify test', function () {
     expect(stringify(100)).toBe('100')
   })
 
+  it('should stringify a date', function () {
+    expect(stringify(new Date(1000))).toBe('new Date(1000)');
+    expect(eval(stringify(new Date(1000)))).toEqual(new Date(1000));
+  })
+
   it('should stringify a simple string', function () {
     expect(stringify('abc')).toBe("'abc'")
   })
