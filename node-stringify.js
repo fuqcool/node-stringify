@@ -3,9 +3,14 @@ var _ = require('underscore')
 var stringify = function (obj) {
   if (_.isNull(obj)) { return 'null' }
   if (_.isUndefined(obj)) { return 'undefined' }
-  if (_.isRegExp(obj) || _.isFunction(obj) || _.isNumber(obj) || _.isBoolean(obj)) {
+  if (_.isRegExp(obj) || _.isNumber(obj) || _.isBoolean(obj)) {
     return obj.toString()
   }
+
+  if (_.isFunction(obj)) {
+    return '(' + obj.toString() + ')';
+  }
+
   if (_.isString(obj)) { return "'" + obj.replace(/'/g, "\\'") + "'" }
 
   if (_.isDate(obj)) { return 'new Date(' + obj.getTime() + ')' }
