@@ -21,7 +21,11 @@ describe('node-stringify test', function () {
   })
 
   it('should stringify a function', function () {
-    expect(stringify(function (x, y, z) {})).toBe('(function (x, y, z) {})')
+    expect(stringify(function (a, b) { return a + b }))
+      .toBe('(function (a, b) { return a + b })')
+
+    var fn = eval(stringify(function (a, b) { return a + b }))
+    expect(fn(2, 5)).toBe(7)
   })
 
   it('should stringify a number', function () {

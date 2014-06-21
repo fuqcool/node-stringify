@@ -8,7 +8,7 @@ var stringify = function (obj) {
   }
 
   if (_.isFunction(obj)) {
-    return '(' + obj.toString() + ')';
+    return '(' + obj.toString() + ')'
   }
 
   if (_.isString(obj)) { return "'" + obj.replace(/'/g, "\\'") + "'" }
