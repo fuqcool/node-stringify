@@ -23,7 +23,7 @@ console.assert(stringify(undefined) === 'undefined');
 
 console.assert(stringify(new Date(1000)) === 'new Date(1000)');
 
-console.assert(stringify(function (a,b,c) {}) === 'function (a,b,c) {}');
+console.assert(stringify(function (a,b,c) {}) === '(function (a,b,c) {})');
 
 console.assert(stringify([1, 2, 3]) === '[1,2,3]');
 
