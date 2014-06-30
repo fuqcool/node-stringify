@@ -48,6 +48,11 @@ describe('node-stringify test', function () {
     testEval("a'bc")
   })
 
+  it('should stringify a string with multiple lines', function () {
+    expect(stringify('\n')).toBe("'\\n'")
+    testEval('\n');
+  })
+
   it('should stringify an empty array', function () {
     expect(stringify([])).toBe('[]')
     testEval([])

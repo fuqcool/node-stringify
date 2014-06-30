@@ -11,7 +11,9 @@ var stringify = function (obj) {
     return '(' + obj.toString() + ')'
   }
 
-  if (_.isString(obj)) { return "'" + obj.replace(/'/g, "\\'") + "'" }
+  if (_.isString(obj)) {
+    return "'" + obj.replace(/'/g, "\\'").replace(/\n/g, '\\n') + "'"
+  }
 
   if (_.isDate(obj)) { return 'new Date(' + obj.getTime() + ')' }
 
