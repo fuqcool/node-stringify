@@ -75,6 +75,14 @@ describe('node-stringify test', function () {
     testEval([77, null, undefined, "a'bc"])
   })
 
+  it('should stringify arguments to array', function () {
+    var fn = function (a, b) {
+      expect(stringify(arguments)).toBe('[3,5]')
+    }
+
+    fn(3, 5)
+  })
+
   it('should stringify an empty object', function () {
     expect(stringify({})).toBe('({})')
     testEval({})
