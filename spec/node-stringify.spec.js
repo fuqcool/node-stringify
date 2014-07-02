@@ -33,6 +33,11 @@ describe('node-stringify test', function () {
     testEval(100)
   })
 
+  it('should stringify special numbers', function () {
+    expect(stringify(NaN)).toBe('NaN')
+    expect(stringify(Infinity)).toBe('Infinity')
+  })
+
   it('should stringify a date', function () {
     expect(stringify(new Date(1000))).toBe('new Date(1000)')
     testEval(new Date(1000))
