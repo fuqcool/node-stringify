@@ -38,6 +38,14 @@ describe('node-stringify test', function () {
     expect(stringify(Infinity)).toBe('Infinity')
   })
 
+  it('should stringify a boolean', function () {
+    expect(stringify(true)).toBe('true')
+    testEval(true);
+
+    expect(stringify(false)).toBe('false')
+    testEval(false);
+  })
+
   it('should stringify a date', function () {
     expect(stringify(new Date(1000))).toBe('new Date(1000)')
     testEval(new Date(1000))
