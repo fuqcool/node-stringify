@@ -40,10 +40,10 @@ describe('node-stringify test', function () {
 
   it('should stringify a boolean', function () {
     expect(stringify(true)).toBe('true')
-    testEval(true);
+    testEval(true)
 
     expect(stringify(false)).toBe('false')
-    testEval(false);
+    testEval(false)
   })
 
   it('should stringify a date', function () {
@@ -63,7 +63,17 @@ describe('node-stringify test', function () {
 
   it('should stringify a string with multiple lines', function () {
     expect(stringify('\n')).toBe("'\\n'")
-    testEval('\n');
+    testEval('\n')
+  })
+
+  it('should stringify a windows style multi-line', function () {
+    expect(stringify('abc\r\n')).toBe("'abc\\r\\n'")
+    testEval('abc\r\n')
+  })
+
+  it('should stringify a string with special chars', function () {
+    expect(stringify('ab\t\b\v\fc')).toBe("'ab\\t\\b\\v\\fc'")
+    testEval('ab\t\b\v\fc')
   })
 
   it('should stringify an empty array', function () {

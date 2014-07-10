@@ -1,6 +1,17 @@
 var _ = require('underscore')
 
-var stringify = function (obj) {
+function escapeString(str) {
+  return str
+    .replace(/'/g, "\\'")
+    .replace(/\n/g, '\\n')
+    .replace(/\r/g, '\\r')
+    .replace(/\t/g, '\\t')
+    .replace(/\v/g, '\\v')
+    .replace(/[\b]/g, '\\b')
+    .replace(/\f/g, '\\f')
+}
+
+function stringify(obj) {
   if (_.isNull(obj)) return 'null'
   if (_.isUndefined(obj)) return 'undefined'
   if (_.isRegExp(obj) || _.isNumber(obj) || _.isBoolean(obj))
@@ -10,7 +21,7 @@ var stringify = function (obj) {
     return '(' + obj.toString() + ')'
 
   if (_.isString(obj))
-    return "'" + obj.replace(/'/g, "\\'").replace(/\n/g, '\\n') + "'"
+    return "'" + escapeString(obj) + "'"
 
   if (_.isDate(obj)) return 'new Date(' + obj.getTime() + ')'
 
