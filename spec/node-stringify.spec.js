@@ -73,7 +73,7 @@ describe('node-stringify test', function () {
 
   it('should stringify a string with special chars', function () {
     expect(stringify('ab\t\b\v\fc')).toBe("'ab\\t\\b\\v\\fc'")
-    testEval('ab\t\b\v\fc')
+    testEval('ab\t\b\v\f\\c')
   })
 
   it('should stringify an empty array', function () {

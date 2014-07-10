@@ -2,6 +2,7 @@ var _ = require('underscore')
 
 function escapeString(str) {
   return str
+    .replace(/\\/g, '\\\\')
     .replace(/'/g, "\\'")
     .replace(/\n/g, '\\n')
     .replace(/\r/g, '\\r')
