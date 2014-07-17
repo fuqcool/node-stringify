@@ -52,4 +52,4 @@ console.assert(stringify({a: 1, b: [2, 3]}) === '({a:1,b:[2,3]})');
 - The result of `node-stringify` can be retrieved directly using `eval`.
 
 ## License
-MIT License
+MIT License.
