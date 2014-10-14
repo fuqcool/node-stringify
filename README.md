@@ -1,6 +1,6 @@
 # node-stringify 
 
-![Build Status](http://img.shields.io/travis/fuqcool/node-stringify.svg?style=flat-square)
+![Build Status](http://img.shields.io/travis/fuqcool/node-stringify.svg?style=flat-square) ![npm](http://img.shields.io/npm/v/node-stringify.svg?style=flat-square) ![Total Downloads](http://img.shields.io/npm/dm/node-stringify.svg?style=flat-square)
 
 Stringify all types of javascript objects.
 
