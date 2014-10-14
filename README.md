@@ -1,4 +1,6 @@
-# node-stringify [![Build Status](https://travis-ci.org/fuqcool/node-stringify.svg?branch=master)](https://travis-ci.org/fuqcool/node-stringify)
+# node-stringify 
+
+![Build Status](http://img.shields.io/travis/fuqcool/node-stringify.svg?style=flat-square)
 
 Stringify all types of javascript objects.
 
