@@ -34,7 +34,7 @@ function stringify(obj) {
 
   if (_.isObject(obj))
     return '({' + _.map(obj, function (v, k) {
-      return k + ':' + stringify(v)
+      return stringify(k) + ':' + stringify(v)
     }).join(',') + '})'
 }
 

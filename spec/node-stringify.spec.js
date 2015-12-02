@@ -109,4 +109,8 @@ describe('node-stringify test', function () {
   it('should stringify an object containning arrays', function () {
     testEval({a: [1, 2, 3], b: /foo$/i})
   })
+
+  it('should stringify an object having non-valid identifiers as keys', function () {
+    testEval({"a'bc": [1]})
+  })
 })
