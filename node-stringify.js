@@ -12,14 +12,14 @@ function escapeString(str) {
     .replace(/\f/g, '\\f')
 }
 
-function stringify(obj) {
+function stringify(obj, parenthesis = true) {
   if (_.isNull(obj)) return 'null'
   if (_.isUndefined(obj)) return 'undefined'
   if (_.isRegExp(obj) || _.isNumber(obj) || _.isBoolean(obj))
     return obj.toString()
 
   if (_.isFunction(obj))
-    return '(' + obj.toString() + ')'
+    return parenthesis ? '(' + obj.toString() + ')' : obj.toString()
 
   if (_.isString(obj))
     return "'" + escapeString(obj) + "'"
@@ -33,9 +33,11 @@ function stringify(obj) {
     return '[' + _.map(obj, stringify).join(',') + ']'
 
   if (_.isObject(obj))
-    return '({' + _.map(obj, function (v, k) {
+    return parenthesis ? ('({' + _.map(obj, function (v, k) {
       return stringify(k) + ':' + stringify(v)
-    }).join(',') + '})'
+    }).join(',') + '})') : ('{' + _.map(obj, function (v, k) {
+      return stringify(k) + ':' + stringify(v)
+    }).join(',') + '}')
 }
 
 module.exports = stringify
