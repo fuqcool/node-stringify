@@ -1,4 +1,4 @@
-var _ = require('underscore')
+'use strict'
 
 function escapeString(str) {
   return str
@@ -12,30 +12,38 @@ function escapeString(str) {
     .replace(/\f/g, '\\f')
 }
 
-function stringify(obj) {
-  if (_.isNull(obj)) return 'null'
-  if (_.isUndefined(obj)) return 'undefined'
-  if (_.isRegExp(obj) || _.isNumber(obj) || _.isBoolean(obj))
-    return obj.toString()
+function isType(obj, type) {
+  var t = Object.prototype.toString.call(obj)
+  return t === `[object ${type}]`
+}
 
-  if (_.isFunction(obj))
+function stringify(obj) {
+  if (obj == null)
+    return obj + ''
+
+  if (isType(obj, 'RegExp') || isType(obj, 'Number') || isType(obj, 'Boolean')) {
+    return obj.toString()
+  }
+
+  if (typeof obj === 'function')
     return '(' + obj.toString() + ')'
 
-  if (_.isString(obj))
+  if (typeof obj === 'string')
     return "'" + escapeString(obj) + "'"
 
-  if (_.isDate(obj)) return 'new Date(' + obj.getTime() + ')'
+  if (isType(obj, 'Date'))
+    return 'new Date(' + obj.getTime() + ')'
 
-  if (_.isArguments(obj))
-    obj = _.toArray(obj)
+  if (Array.isArray(obj))
+    return '[' + obj.map(v => stringify(v)).join(',') + ']'
 
-  if (_.isArray(obj))
-    return '[' + _.map(obj, stringify).join(',') + ']'
-
-  if (_.isObject(obj))
-    return '({' + _.map(obj, function (v, k) {
+  if (typeof obj === 'object')
+    return '({' + Object.keys(obj).map(k => {
+      var v = obj[k]
       return stringify(k) + ':' + stringify(v)
     }).join(',') + '})'
+
+  throw new Error('Unsupported object: ' + obj)
 }
 
 module.exports = stringify

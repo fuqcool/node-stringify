@@ -1,6 +1,6 @@
 {
   "name": "node-stringify",
-  "version": "0.0.19",
+  "version": "0.1.0",
   "author": {
     "name": "Chiang Fu",
     "email": "fuqcool@gmail.com"
@@ -12,7 +12,6 @@
     "url": "https://github.com/fuqcool/node-stringify.git"
   },
   "dependencies": {
-    "underscore": "^1.6.0"
   },
   "devDependencies": {
     "jasmine-node": "1.14.2"
