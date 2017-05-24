@@ -12,14 +12,20 @@ function escapeString(str) {
     .replace(/\f/g, '\\f')
 }
 
-function stringify(obj, parenthesis = true) {
+var defaultOptions = {
+  parenthesis: true
+}
+
+function stringify(obj, options) {
+  options = Object.assign({}, defaultOptions, options || {})
+  
   if (_.isNull(obj)) return 'null'
   if (_.isUndefined(obj)) return 'undefined'
   if (_.isRegExp(obj) || _.isNumber(obj) || _.isBoolean(obj))
     return obj.toString()
 
   if (_.isFunction(obj))
-    return parenthesis ? '(' + obj.toString() + ')' : obj.toString()
+    return options.parenthesis ? '(' + obj.toString() + ')' : obj.toString()
 
   if (_.isString(obj))
     return "'" + escapeString(obj) + "'"
@@ -33,7 +39,7 @@ function stringify(obj, parenthesis = true) {
     return '[' + _.map(obj, stringify).join(',') + ']'
 
   if (_.isObject(obj))
-    return parenthesis ? ('({' + _.map(obj, function (v, k) {
+    return options.parenthesis ? ('({' + _.map(obj, function (v, k) {
       return stringify(k) + ':' + stringify(v)
     }).join(',') + '})') : ('{' + _.map(obj, function (v, k) {
       return stringify(k) + ':' + stringify(v)
