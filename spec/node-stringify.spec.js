@@ -87,7 +87,7 @@ describe('node-stringify test', function () {
 
   it('should stringify arguments correctly', function () {
     var fn = function (a, b) {
-      expect(stringify(arguments)).toBe(`({'0':3,'1':5})`)
+      expect(stringify(arguments)).toBe("({'0':3,'1':5})")
     }
 
     fn(3, 5)

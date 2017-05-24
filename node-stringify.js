@@ -14,19 +14,27 @@ function escapeString(str) {
 
 function isType(obj, type) {
   var t = Object.prototype.toString.call(obj)
-  return t === `[object ${type}]`
+  return t === '[object ' + type + ']'
 }
 
-function stringify(obj) {
+var defaultOptions = {
+  parenthesis: true
+}
+
+function stringify(obj, options) {
+  options = Object.assign({}, defaultOptions, options || {})
+
+  var openParen = options.parenthesis ? '(' : ''
+  var closeParen = options.parenthesis ? ')' : ''
+
   if (obj == null)
     return obj + ''
 
-  if (isType(obj, 'RegExp') || isType(obj, 'Number') || isType(obj, 'Boolean')) {
+  if (isType(obj, 'RegExp') || isType(obj, 'Number') || isType(obj, 'Boolean'))
     return obj.toString()
-  }
 
   if (typeof obj === 'function')
-    return '(' + obj.toString() + ')'
+    return openParen + obj.toString() + closeParen
 
   if (typeof obj === 'string')
     return "'" + escapeString(obj) + "'"
@@ -38,10 +46,10 @@ function stringify(obj) {
     return '[' + obj.map(v => stringify(v)).join(',') + ']'
 
   if (typeof obj === 'object')
-    return '({' + Object.keys(obj).map(k => {
+    return openParen + '{' + Object.keys(obj).map(k => {
       var v = obj[k]
       return stringify(k) + ':' + stringify(v)
-    }).join(',') + '})'
+    }).join(',') + '}' + closeParen
 
   throw new Error('Unsupported object: ' + obj)
 }
