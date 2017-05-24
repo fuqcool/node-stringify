@@ -17,7 +17,10 @@ var defaultOptions = {
 }
 
 function stringify(obj, options) {
-  options = Object.assign({}, defaultOptions, options || {})
+  options = typeof options === 'object' ? options : {}
+  options = {
+    parenthesis: isUndefined(options.parenthesis) ? defaultOptions.parenthesis : options.parenthesis
+  }
   
   if (_.isNull(obj)) return 'null'
   if (_.isUndefined(obj)) return 'undefined'
@@ -47,3 +50,7 @@ function stringify(obj, options) {
 }
 
 module.exports = stringify
+
+function isUndefined(t) {
+  return typeof t === 'undefined'
+}
