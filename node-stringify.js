@@ -12,14 +12,23 @@ function escapeString(str) {
     .replace(/\f/g, '\\f')
 }
 
-function stringify(obj) {
+var defaultOptions = {
+  parenthesis: true
+}
+
+function stringify(obj, options) {
+  options = typeof options === 'object' ? options : {}
+  options = {
+    parenthesis: isUndefined(options.parenthesis) ? defaultOptions.parenthesis : options.parenthesis
+  }
+  
   if (_.isNull(obj)) return 'null'
   if (_.isUndefined(obj)) return 'undefined'
   if (_.isRegExp(obj) || _.isNumber(obj) || _.isBoolean(obj))
     return obj.toString()
 
   if (_.isFunction(obj))
-    return '(' + obj.toString() + ')'
+    return options.parenthesis ? '(' + obj.toString() + ')' : obj.toString()
 
   if (_.isString(obj))
     return "'" + escapeString(obj) + "'"
@@ -33,9 +42,15 @@ function stringify(obj) {
     return '[' + _.map(obj, stringify).join(',') + ']'
 
   if (_.isObject(obj))
-    return '({' + _.map(obj, function (v, k) {
+    return options.parenthesis ? ('({' + _.map(obj, function (v, k) {
       return stringify(k) + ':' + stringify(v)
-    }).join(',') + '})'
+    }).join(',') + '})') : ('{' + _.map(obj, function (v, k) {
+      return stringify(k) + ':' + stringify(v)
+    }).join(',') + '}')
 }
 
 module.exports = stringify
+
+function isUndefined(t) {
+  return typeof t === 'undefined'
+}
