@@ -33,6 +33,11 @@ console.assert(stringify([1, 2, 3]) === '[1,2,3]');
 console.assert(stringify({a: 1, b: 2}) === '({a:1,b:2})');
 
 console.assert(stringify({a: 1, b: [2, 3]}) === '({a:1,b:[2,3]})');
+
+// You can turn off the parenthesis too
+console.assert(stringify({a: 1, b: 2}, {parenthesis:false}) === '{a:1,b:2}');
+
+console.assert(stringify({a: 1, b: [2, 3]}, {parenthesis:false}) === '{a:1,b:[2,3]}');
 ```
 
 ## Supported types
