@@ -2,7 +2,10 @@
 
 ![Build Status](http://img.shields.io/travis/fuqcool/node-stringify.svg?style=flat-square) ![npm](http://img.shields.io/npm/v/node-stringify.svg?style=flat-square) ![Total Downloads](http://img.shields.io/npm/dm/node-stringify.svg?style=flat-square)
 
-Stringify all types of javascript objects.
+Stringify javascript objects and retrieve with `eval`.
+
+## Important notes
+This library **IS NOT** designed to replace `JSON.stringify`. Unless you truly understand what this library does, I suggest you use `JSON.stringify` in the first place.
 
 ## Install
 
@@ -53,10 +56,10 @@ console.assert(stringify({a: 1, b: [2, 3]}, {parenthesis:false}) === '{a:1,b:[2,
 - object
 
 ## Difference with `JSON.stringify`
+- The result of `node-stringify` can be retrieved directly using `eval`(Please be aware that `eval` may be insecure).
 
-- `node-stringify` is designed to work with all kinds of objects in javascript. `JSON.stringify` is designed to work with objects.
-
-- The result of `node-stringify` can be retrieved directly using `eval`.
+## Known issues
+- Not support objects with circular references or too deeply nested(implemented in a recursive way).
 
 ## License
 MIT License.
